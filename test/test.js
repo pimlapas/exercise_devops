@@ -7,3 +7,19 @@ describe('Validate setting the test', () => {
         assert.ok(true)
     })
 })
+
+describe('GET "/"', () => {
+    it('respond with Hello!', (done) => {
+        request(app).get('/').expect('Hello!', done)
+    })
+})
+
+describe('GET "/items"', () => {
+    it('respond with array of items', (done) => {
+        let want = [
+            { id: 1, name:'iPhone12 Pro Max'},
+            { id: 2, name:'Samsung Hero'}
+        ]
+        request(app).get('/items').expect(want, done)
+    })
+})
